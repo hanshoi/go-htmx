@@ -10,11 +10,12 @@ import (
 )
 
 func CreateRoutes(app *echo.Echo) {
-	app.GET("/", index)
-	app.GET("/name/", name)
+	app.GET("/", lists)
+	app.GET("/detail/", detail)
+	app.GET("/about/", about)
 }
 
-func index(ctx echo.Context) error {
+func lists(ctx echo.Context) error {
 	cc := &utils.HtmxContext{Context: ctx}
 	name := "Stacy"
 	if cc.IsHtmx() {
@@ -24,11 +25,10 @@ func index(ctx echo.Context) error {
 	return utils.RenderPage(ctx, http.StatusOK, templates.Index(name))
 }
 
-func name(ctx echo.Context) error {
-	cc := &utils.HtmxContext{Context: ctx}
-	name := "Lola"
-	if cc.IsHtmx() {
-		name = "Randy"
-	}
-	return utils.Render(ctx, http.StatusOK, templates.Name(name))
+func detail(ctx echo.Context) error {
+
+}
+
+func about(ctx echo.Context) error {
+	return utils.RenderPage(ctx, http.StatusOK, templates.Index(name))
 }
