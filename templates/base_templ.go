@@ -51,7 +51,7 @@ func Base(content templ.Component) templ.Component {
 	})
 }
 
-func Content(body templ.Component) templ.Component {
+func Content(body templ.Component, navbar templ.Component) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -64,7 +64,7 @@ func Content(body templ.Component) templ.Component {
 			templ_7745c5c3_Var3 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = NavBar().Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = navbar.Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -79,7 +79,15 @@ func Content(body templ.Component) templ.Component {
 	})
 }
 
-func NavBar() templ.Component {
+type Page string
+
+const (
+	List   Page = "list"
+	Detail Page = "detail"
+	About  Page = "about"
+)
+
+func NavBar(page Page) templ.Component {
 	return templ.ComponentFunc(func(ctx context.Context, templ_7745c5c3_W io.Writer) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_Buffer, templ_7745c5c3_IsBuffer := templ_7745c5c3_W.(*bytes.Buffer)
 		if !templ_7745c5c3_IsBuffer {
@@ -101,7 +109,7 @@ func NavBar() templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("--><a href=\"/\" class=\"rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white\">")
+		_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString("--><a href=\"/\" class=\"rounded-md bg-gray-300 px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white\">")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

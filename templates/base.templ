@@ -19,12 +19,20 @@ templ Base(content templ.Component) {
 	</html>
 }
 
-templ Content(body templ.Component) {
-	@NavBar()
+templ Content(body templ.Component, navbar templ.Component) {
+	@navbar
 	@body
 }
 
-templ NavBar() {
+type Page string
+
+const (
+	List   Page = "list"
+	Detail Page = "detail"
+	About  Page = "about"
+)
+
+templ NavBar(page Page) {
 	<nav class="bg-gray-800">
 		<div class="mx-auto max-w-7xl px-2 sm:px-4 lg:px-8">
 			<div class="relative flex h-16 items-center justify-between">
@@ -35,7 +43,7 @@ templ NavBar() {
 					<div class="hidden lg:ml-6 lg:block">
 						<div class="flex space-x-4">
 							<!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-							<a href="/" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white">Lists</a>
+							<a href="/" class="rounded-md bg-gray-300 px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white">Lists</a>
 							<a href="/detail/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Detail</a>
 							<a href="/about/" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">About</a>
 						</div>
