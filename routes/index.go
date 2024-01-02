@@ -10,5 +10,11 @@ import (
 )
 
 func Index(ctx echo.Context) error {
-	return utils.Render(ctx, http.StatusOK, components.Base(components.Index("John")))
+	cc := &utils.HtmxContext{Context: ctx}
+	name := "Stacy"
+	if cc.IsHtmx() {
+		name = "Randy"
+	}
+
+	return utils.Render(ctx, http.StatusOK, components.Base(components.Index(name)))
 }
