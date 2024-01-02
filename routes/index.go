@@ -22,13 +22,13 @@ func lists(ctx echo.Context) error {
 		name = "Randy"
 	}
 
-	return utils.RenderPage(ctx, http.StatusOK, templates.Index(name))
+	return utils.RenderPage(ctx, http.StatusOK, templates.List(name))
 }
 
 func detail(ctx echo.Context) error {
-
+	return utils.RenderPage(ctx, http.StatusOK, templates.Detail())
 }
 
 func about(ctx echo.Context) error {
-	return utils.RenderPage(ctx, http.StatusOK, templates.Index(name))
+	return utils.RenderPage(ctx, http.StatusOK, templates.About())
 }
