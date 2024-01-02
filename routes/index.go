@@ -10,5 +10,5 @@ import (
 )
 
 func Index(ctx echo.Context) error {
-	return utils.Render(ctx, http.StatusOK, components.Index("John"))
+	return utils.Render(ctx, http.StatusOK, components.Base(components.Index("John")))
 }

@@ -1,6 +1,6 @@
 package components
 
-templ root(body templ.Component) {
+templ Base(body templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" class="bg-white h-full">
 		<head>
@@ -9,7 +9,9 @@ templ root(body templ.Component) {
 		<body
 			class="h-full"
 			id="body"
-		></body>
+		>
+			@body
+		</body>
 	</html>
 }
 
