@@ -16,13 +16,13 @@ func CreateRoutes(app *echo.Echo) {
 }
 
 func lists(ctx echo.Context) error {
-	cc := &utils.HtmxContext{Context: ctx}
-	name := "Stacy"
-	if cc.IsHtmx() {
-		name = "Randy"
-	}
+	// cc := &utils.HtmxContext{Context: ctx}
+	// name := "Stacy"
+	// if cc.IsHtmx() {
+	// 	name = "Randy"
+	// }
 
-	return utils.RenderPage(ctx, http.StatusOK, templates.List, templates.ListPage(name))
+	return utils.RenderPage(ctx, http.StatusOK, templates.List, templates.ListPage())
 }
 
 func detail(ctx echo.Context) error {
