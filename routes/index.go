@@ -9,7 +9,12 @@ import (
 	"github.com/labstack/echo/v4"
 )
 
-func Index(ctx echo.Context) error {
+func CreateRoutes(app *echo.Echo) {
+	app.GET("/", index)
+	app.GET("/name/", name)
+}
+
+func index(ctx echo.Context) error {
 	cc := &utils.HtmxContext{Context: ctx}
 	name := "Stacy"
 	if cc.IsHtmx() {
@@ -17,4 +22,13 @@ func Index(ctx echo.Context) error {
 	}
 
 	return utils.Render(ctx, http.StatusOK, components.Base(components.Index(name)))
+}
+
+func name(ctx echo.Context) error {
+	cc := &utils.HtmxContext{Context: ctx}
+	name := "Lola"
+	if cc.IsHtmx() {
+		name = "Randy"
+	}
+	return utils.Render(ctx, http.StatusOK, components.Name(name))
 }

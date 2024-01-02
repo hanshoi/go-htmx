@@ -9,5 +9,5 @@ type HtmxContext struct {
 }
 
 func (h *HtmxContext) IsHtmx() bool {
-	return h.Request().Header.Get("Hx-Boost") != ""
+	return h.Request().Header.Get("Hx-Request") != ""
 }

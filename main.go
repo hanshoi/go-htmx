@@ -11,7 +11,7 @@ import (
 func main() {
 	app := echo.New()
 	app.Static("/static", "static")
-	app.GET("/", routes.Index)
+	routes.CreateRoutes(app)
 
 	log.Fatal(app.Start(":3000"))
 }

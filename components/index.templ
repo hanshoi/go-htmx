@@ -17,6 +17,13 @@ templ Base(body templ.Component) {
 	</html>
 }
 
+templ Name(name string) {
+	<div id="name">Hello, { name }!</div>
+}
+
 templ Index(name string) {
-	<div>Hello, { name }!</div>
+	<div>
+		@Name(name)
+		<button hx-get="/name/" hx-target="#name" hx-swap="outerHTML">Change Name</button>
+	</div>
 }
