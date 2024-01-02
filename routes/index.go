@@ -21,7 +21,7 @@ func index(ctx echo.Context) error {
 		name = "Randy"
 	}
 
-	return utils.Render(ctx, http.StatusOK, components.Base(components.Index(name)))
+	return utils.RenderPage(ctx, http.StatusOK, components.Index(name))
 }
 
 func name(ctx echo.Context) error {

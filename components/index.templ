@@ -11,6 +11,7 @@ templ Base(body templ.Component) {
 			id="body"
 			hx-boost="true"
 			hx-target="#body"
+			hx-swap="innerHTML"
 		>
 			@body
 		</body>
@@ -25,5 +26,6 @@ templ Index(name string) {
 	<div>
 		@Name(name)
 		<button hx-get="/name/" hx-target="#name" hx-swap="outerHTML">Change Name</button>
+		<a href="/">Refresh with htmx</a>
 	</div>
 }

@@ -2,6 +2,7 @@ package utils
 
 import (
 	"context"
+	"goh/go-htmx/components"
 	"net/http"
 
 	"github.com/a-h/templ"
@@ -17,4 +18,12 @@ func Render(ctx echo.Context, status int, t templ.Component) error {
 	}
 
 	return nil
+}
+
+func RenderPage(ctx echo.Context, status int, t templ.Component) error {
+	cc := &HtmxContext{Context: ctx}
+	if cc.IsHtmx() {
+		return Render(ctx, status, t)
+	}
+	return Render(ctx, status, components.Base(t))
 }
