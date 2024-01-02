@@ -10,6 +10,7 @@ import (
 
 func main() {
 	app := echo.New()
+	app.Static("/static", "static")
 	app.GET("/", routes.Index)
 
 	log.Fatal(app.Start(":3000"))

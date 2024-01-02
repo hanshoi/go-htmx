@@ -1,5 +1,18 @@
 package components
 
+templ root(body templ.Component) {
+	<!DOCTYPE html>
+	<html lang="en" class="bg-white h-full">
+		<head>
+			<script src="/static/htmx.min.js" defer></script>
+		</head>
+		<body
+			class="h-full"
+			id="body"
+		></body>
+	</html>
+}
+
 templ Index(name string) {
-    <div>Hello, {name}!</div>
+	<div>Hello, { name }!</div>
 }
