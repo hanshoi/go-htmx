@@ -23,7 +23,7 @@ func Render(ctx echo.Context, status int, t templ.Component) error {
 func RenderPage(ctx echo.Context, status int, t templ.Component) error {
 	cc := &HtmxContext{Context: ctx}
 	if cc.IsHtmx() {
-		return Render(ctx, status, t)
+		return Render(ctx, status, templates.Content(t))
 	}
-	return Render(ctx, status, templates.Base(t))
+	return Render(ctx, status, templates.Base(templates.Content(t)))
 }

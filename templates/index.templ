@@ -1,6 +1,6 @@
 package templates
 
-templ Base(body templ.Component) {
+templ Base(content templ.Component) {
 	<!DOCTYPE html>
 	<html lang="en" class="bg-gray-900 h-full">
 		<head>
@@ -14,9 +14,14 @@ templ Base(body templ.Component) {
 			hx-target="#body"
 			hx-swap="innerHTML"
 		>
-			@body
+			@content
 		</body>
 	</html>
+}
+
+templ Content(body templ.Component) {
+	@NavBar()
+	@body
 }
 
 templ Name(name string) {
@@ -29,4 +34,22 @@ templ Index(name string) {
 		<button hx-get="/name/" hx-target="#name" hx-swap="outerHTML">Change Name</button>
 		<a href="/">Refresh with htmx</a>
 	</div>
+}
+
+templ NavBar() {
+	<nav class="mx-auto flex justify-between max-w-7xl items-center p-6 lg:px-8" aria-label="Global">
+		<div class="flex basis-1/4">
+			<a href="/" class="-m-1.5 p-1.5">
+				<span class="sr-only">Quteo</span>
+				<img class="h-6 w-auto" src="/static/logo.png" alt=""/>
+			</a>
+		</div>
+		<div class="flex gap-x-12">
+			<a href="#" class="text-sm font-semibold leading-6 text-white">Product</a>
+			<a href="#" class="text-sm font-semibold leading-6 text-white">Features</a>
+			<a href="#" class="text-sm font-semibold leading-6 text-white">Marketplace</a>
+			<a href="#" class="text-sm font-semibold leading-6 text-white">Company</a>
+		</div>
+		<div class="basis-1/4"></div>
+	</nav>
 }
