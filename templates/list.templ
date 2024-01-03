@@ -38,7 +38,10 @@ templ AddList() {
 			</div>
 		</div>
 		<div class="mt-5 flex justify-end">
-			<button type="button" class="inline-flex w-full justify-center rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 sm:ml-3 sm:w-auto">Upload</button>
+			<form hx-post="/list/add/">
+				<input type="file" id="listFile" name="filename" class="inline-flex w-full justify-center rounded-md bg-gray-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 sm:ml-3 sm:w-auto"/>
+				<button type="submit" class="inline-flex w-full justify-center rounded-md bg-orange-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-orange-500 sm:ml-3 sm:w-auto">Upload</button>
+			</form>
 		</div>
 	</div>
 }
