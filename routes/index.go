@@ -14,6 +14,7 @@ type MyHandlerFunction func(echo.Context, *db.DB) error
 
 func CreateRoutes(app *echo.Echo, db *db.DB) {
 	app.GET("/", wrap(lists, db))
+	app.GET("/list/add/", addListModal)
 	app.GET("/detail/", wrap(detail, db))
 	app.GET("/about/", about)
 }
@@ -35,6 +36,10 @@ func lists(ctx echo.Context, db *db.DB) error {
 		return utils.RenderPage(ctx, http.StatusOK, templates.ListPageType, templates.EmptyListPage())
 	}
 	return utils.RenderPage(ctx, http.StatusOK, templates.ListPageType, templates.ListPage(lists))
+}
+
+func addListModal(ctx echo.Context) error {
+	return utils.Render(ctx, http.StatusOK, templates.Modal(templates.AddList()))
 }
 
 func detail(ctx echo.Context, db *db.DB) error {

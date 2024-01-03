@@ -1,4 +1,4 @@
-# HETT - Htmx + Echo + Templ + Tailwind by Quteo
+# HETTA - Htmx + Echo + Templ + Tailwind + AlpineJS by Quteo
 
 This is a example project for getting following technologies to work with golang.
 
@@ -6,6 +6,8 @@ This is a example project for getting following technologies to work with golang
 - Echo
 - Templ
 - Tailwind
+- AlpineJS
+- PostgreSQL
 
 Graciously developed by https://quteo.com
 

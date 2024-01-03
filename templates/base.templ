@@ -6,6 +6,7 @@ templ Base(content templ.Component) {
 		<head>
 			<link rel="stylesheet" href="/static/tailwind.css" defer/>
 			<script src="/static/htmx.min.js" defer></script>
+			<script src="//unpkg.com/alpinejs" defer></script>
 		</head>
 		<body
 			class="h-full"
@@ -15,6 +16,7 @@ templ Base(content templ.Component) {
 			hx-swap="innerHTML"
 		>
 			@content
+			<div id="modal"></div>
 		</body>
 	</html>
 }
@@ -71,7 +73,7 @@ templ NavBar(page Page) {
 				</div>
 				<div class="hidden lg:ml-4 lg:block">
 					<div class="flex items-center">
-						<button type="button" class="relative flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+						<button hx-get="/list/add/" hx-target="#modal" type="button" class="relative flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
 							<span class="absolute -inset-1.5"></span>
 							<span class="sr-only">View notifications</span>
 							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -83,4 +85,25 @@ templ NavBar(page Page) {
 			</div>
 		</div>
 	</nav>
+}
+
+templ Modal(content templ.Component) {
+	<div @close-modal.window="$el.remove()" id="modal-content" class="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+		<div class="fixed inset-0 bg-gray-700 bg-opacity-75 transition-opacity"></div>
+		<div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+			<div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+				<div class="relative transform overflow-hidden rounded-lg bg-gray-900 px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+					<div class="absolute right-0 top-0 hidden pr-4 pt-4 sm:block">
+						<button @click="$dispatch('close-modal')" type="button" class="rounded-md bg-gray-800 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+							<span class="sr-only">Close</span>
+							<svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+							</svg>
+						</button>
+					</div>
+					@content
+				</div>
+			</div>
+		</div>
+	</div>
 }
