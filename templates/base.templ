@@ -27,9 +27,9 @@ templ Content(body templ.Component, navbar templ.Component) {
 type Page string
 
 const (
-	List   Page = "list"
-	Detail Page = "detail"
-	About  Page = "about"
+	ListPageType   Page = "list"
+	DetailPageType Page = "detail"
+	AboutPageType  Page = "about"
 )
 
 templ NavItem(url templ.SafeURL, name string, isActive bool) {
@@ -50,9 +50,9 @@ templ NavBar(page Page) {
 					</div>
 					<div class="hidden lg:ml-6 lg:block">
 						<div class="flex space-x-4">
-							@NavItem("/", "Lists", page == List)
-							@NavItem("/detail/", "Detail", page == Detail)
-							@NavItem("/about/", "About", page == About)
+							@NavItem("/", "Lists", page == ListPageType)
+							@NavItem("/detail/", "Detail", page == DetailPageType)
+							@NavItem("/about/", "About", page == AboutPageType)
 						</div>
 					</div>
 				</div>

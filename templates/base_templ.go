@@ -82,9 +82,9 @@ func Content(body templ.Component, navbar templ.Component) templ.Component {
 type Page string
 
 const (
-	List   Page = "list"
-	Detail Page = "detail"
-	About  Page = "about"
+	ListPageType   Page = "list"
+	DetailPageType Page = "detail"
+	AboutPageType  Page = "about"
 )
 
 func NavItem(url templ.SafeURL, name string, isActive bool) templ.Component {
@@ -179,15 +179,15 @@ func NavBar(page Page) templ.Component {
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = NavItem("/", "Lists", page == List).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = NavItem("/", "Lists", page == ListPageType).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = NavItem("/detail/", "Detail", page == Detail).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = NavItem("/detail/", "Detail", page == DetailPageType).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
-		templ_7745c5c3_Err = NavItem("/about/", "About", page == About).Render(ctx, templ_7745c5c3_Buffer)
+		templ_7745c5c3_Err = NavItem("/about/", "About", page == AboutPageType).Render(ctx, templ_7745c5c3_Buffer)
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
