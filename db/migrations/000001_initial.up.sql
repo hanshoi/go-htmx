@@ -1,0 +1,5 @@
+CREATE TABLE IF NOT EXISTS lists(
+    id serial PRIMARY KEY,
+    filename VARCHAR (128) NOT NULL,
+    name VARCHAR(128) NOT NULL
+)

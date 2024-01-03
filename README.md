@@ -16,10 +16,13 @@ As there is a bunch of things that need to be generated and built for a full ser
 ```shell
 npm install -D tailwindcss
 go install github.com/cosmtrek/air@latest
+go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@latest
 ```
 
 ## Run
 
 ```shell
+docker compose up -d   # for the DB
+migrate -database "postgres://admin:admin@localhost:5432/postgres?sslmode=disable" -path db/migrations up
 air server --port 3000
 ```
